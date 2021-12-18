@@ -3,7 +3,7 @@ import CartContext from '../context/cart/CartContext';
 import './Nav.css';
 
 export default function Nav() {
-  const { cartItem } = useContext(CartContext);
+  const { cartItem, showHideCart } = useContext(CartContext);
   return (
     <nav>
       <div className="nav__left">Shopping Cart With Context API</div>
@@ -15,7 +15,11 @@ export default function Nav() {
       </div>
       <div className="nav__right">
         <div className="cart__icon">
-          <i className="fa fa-shopping-cart" aria-hidden="true" />
+          <i
+            className="fa fa-shopping-cart"
+            aria-hidden="true"
+            onClick={showHideCart}
+          />
           {cartItem.length > 0 && (
             <div className="item__count">
               <span>{cartItem.length}</span>

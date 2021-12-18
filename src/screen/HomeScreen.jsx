@@ -6,7 +6,7 @@ export default function HomeScreen() {
   return (
     <div className="products__wrapper">
       {products.map((product) => (
-        <ProductCard {...product} key={product.id} />
+        <ProductCard {...product} key={product._id} />
       ))}
     </div>
   );
