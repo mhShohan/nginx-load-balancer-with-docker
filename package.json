@@ -1,15 +1,29 @@
 {
-  "name": "load-balancer-nginx",
-  "version": "1.0.0",
-  "description": "",
+  "name": "load-balancer-nginx-docker",
+  "version": "0.0.1",
+  "description": "Load Balancer with Nginx and Docker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js",
+    "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "load-balancer",
+    "nginx",
+    "docker",
+    "rate-limiting",
+    "reverse-proxy",
+    "docker-compose"
+  ],
+  "repository": "https://github.com/mhShohan/nginx-load-balancer-with-docker",
+  "author": "Mehdi Hasan Shohan",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.3"
   }
 }
