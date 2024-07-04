@@ -1,3 +1,5 @@
+# Load balancing is the method of distributing network traffic equally across a pool of resources that support an application.
+
 # Load Balancer NGINX - using CLI (docker)
 
 ### Create a `dockerfile` and add this
@@ -13,12 +15,14 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE 3000
 
-CMD [ "node", "index.js" ]
+CMD [ "npm", "start" ]
 ```
 
-### run this commands in the same directory terminal
+### Run this commands in the same directory terminal
 
 ```
 docker network create lb_net    ==>> create a network to share the network between the load balancer
@@ -85,17 +89,37 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
+```
+
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY package\*.json ./
+
+RUN npm install
+
+COPY . .
+
 EXPOSE 3000
 
 CMD [ "node", "index.js" ]
+
 ```
 
 ### Run this commands in the same directory terminal
 
 ```
-docker network create lb_net    ==>> create a network to share the network between the load balancer
-docker build -t test_node_lb .  ==>> create new image
-```
+
+docker network create lb_net ==>> create a network to share the network between the load balancer
+docker build -t test_node_lb . ==>> create new image
+
+````
 
 ### Create a `nginx.conf` file add add this
 
@@ -120,7 +144,7 @@ server {
     }
 }
 
-```
+````
 
 ### Create `docker-compose.yml` file and add
 
